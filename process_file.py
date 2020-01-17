@@ -15,23 +15,23 @@ def list_of_items_desired(text = input("enter text to look up ")):              
         for my_line in file_variable:
             my_lines.append(my_line.rstrip('\n'))
 
-    list_of_indexes = ([i for i, s in enumerate(my_lines) if text in s])
+    list_of_indexes = ([i for i, s in enumerate(my_lines) if text in s]) #prints the index of each 'X-DSPAM Confidence
     print(list_of_indexes)
 
-    list_of_items = []
+    list_of_items = []                                          #prints each string of 'X-DSPAM Confidence...'
     for i in list_of_indexes:
         list_of_items.append(my_lines[i])
     print(list_of_items)
 
-    list_without_text = ([s.replace('X-DSPAM-Confidence:', '') for s in list_of_items])
+    list_without_text = ([s.replace('X-DSPAM-Confidence:', '') for s in list_of_items]) #strips the specific text from the string
     # print(list_without_text)
 
-    list_of_float = list(map(float, list_without_text))
+    list_of_float = list(map(float, list_without_text))         #prints a list of each float string as a float
     # print(list_of_float)
 
-    total = 0
+    total = 0                                               
     for i in list_of_float:
         total += i
-    print("X-DSPAM-Confidence: ", total/len(list_of_float))
+    print("X-DSPAM-Confidence: ", total/len(list_of_float))     #prints the average of the floats
 
 list_of_items_desired()
